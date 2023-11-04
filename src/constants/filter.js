@@ -1,0 +1,1 @@
+export const filterMenu = ['Home', 'NewsAPI', 'The Guardian', 'New York Times']

@@ -1,0 +1,11 @@
+.filter {
+    display: flex;
+    background: #000;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.filter-items {
+    color: #fff;
+    display: flex;
+}
