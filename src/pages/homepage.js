@@ -6,6 +6,8 @@ import { Navbar, Filter } from '../components'
 import Card from '../components/card'
 import { fetchNewsAPI } from '../api/getNews'
 
+import "./styles.css"
+
 const Homepage = () => {
     const [news, setNews] = useState([])
 
@@ -20,20 +22,29 @@ const Homepage = () => {
 
     console.log(news, "NEW");
     return (
-        <div>
+        <>
             <Navbar />
             <Filter />
-            {
-                news && news.map((item) => {
-                    return <Card
-                        title={item.title}
-                        description={item.description}
-                        imageUrl={item.urlToImage}
-                    />
-                })
-            }
-            <Card />
-        </div>
+            <div className='container'>
+                <div className='row'>
+                    {
+                        news && news.map((item) => {
+                            return (
+                                <div className='col-sm-4'>
+                                    <Card
+                                        title={item.title}
+                                        description={item.description}
+                                        imageUrl={item.urlToImage}
+                                    />
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+
+            </div>
+
+        </>
     )
 }
 
