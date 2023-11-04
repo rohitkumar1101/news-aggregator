@@ -1,0 +1,16 @@
+.card { 
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    width: fit-content;
+    padding: 0 0.8rem;
+}
+
+.card-text {
+    margin-left: 0.8rem;
+}
+
+.card-description{
+    font-size: 12px;
+}
