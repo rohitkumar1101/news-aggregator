@@ -28,16 +28,20 @@ const Homepage = () => {
             <div className='container'>
                 <div className='row'>
                     {
-                        news && news.map((item) => {
-                            return (
-                                <div className='col-sm-4'>
-                                    <Card
-                                        title={item.title}
-                                        description={item.description}
-                                        imageUrl={item.urlToImage}
-                                    />
-                                </div>
-                            )
+                        Array.isArray(news) && news.length && news.map((item) => {
+                            if (item.description !== null) {
+                                return (
+                                    <div className='col-sm-4'>
+                                        <Card
+                                            title={item.title}
+                                            description={item.description}
+                                            imageUrl={item.urlToImage}
+                                            publishedAt={item.publishedAt}
+                                        />
+                                    </div>
+                                )
+                            }
+
                         })
                     }
                 </div>

@@ -1,39 +1,37 @@
 import React from 'react'
 import NewsImage from '../../common/image'
+import { getTruncatedText } from '../../utils'
 
 const Card = ({
     imageUrl,
     title,
-    description
+    description,
+    publishedAt
 }) => {
 
     return (
-        <div className='card p-2'>
-            <NewsImage src={imageUrl} alt="card-thumbnail" className="card-thumbnail" />
-            <div className='card-text'>
-                <h4 className='card-title'>{title}</h4>
-                <p className='card-description'>{description}</p>
+        <div className="card border-0 mb-3">
+            <div className="row g-0">
+                <div className="col-lg-4">
+                    <NewsImage src={imageUrl} className="img-fluid rounded-start" />
+                </div>
+                <div className="col-lg-8">
+                    <div className="card-body pb-0 pt-0 pr-0">
+                        <h6 className="card-title">{title}</h6>
+                        <p className="card-text mb-0"><small>{getTruncatedText(description, 50)}</small></p>
+                        <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
 export default Card
-
-
-
-{/* <div className="container mt-4">
-    <div className="card">
-        <div className="row no-gutters">
-            <div className="col-sm-4">
-                <img src={imageUrl} className="card-img" alt="card-thumbnail" />
-            </div>
-            <div className="col-sm-8">
-                <div className="card-body">
-                    <h5 className="card-title">{title}</h5>
-                    <p className="card-text">{description}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> */}
+// <div className='card p-2'>
+//     <NewsImage src={imageUrl} alt="card-thumbnail" />
+//     <div className='card-text'>
+//         <h4 className='card-title'>{title}</h4>
+//         <p className='card-description'>{description}</p>
+//     </div>
+// </div>
