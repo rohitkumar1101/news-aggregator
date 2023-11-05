@@ -6,7 +6,6 @@ import {
 
 import Homepage from './pages/homepage';
 import Feed from "./pages/feed";
-import { Navbar, Feed as FeedComponent } from "./components";
 
 const App = () => {
   return (

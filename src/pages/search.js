@@ -7,18 +7,19 @@ const Search = ({
 }) => {
     const [searchResults, setSearchResults] = useState([])
 
-    console.log('searchValue: ', searchValue);
-
     useEffect(() => {
         let response = filterObjectsFromArray(allNews, searchValue)
         setSearchResults(response)
-        console.log('response: ', response);
-    }, [searchValue])
-    console.log(searchResults, "SEARch");
+    }, [searchValue, allNews])
+
     return (
         <div className='container p-2'>
             <div className='row'>
-                {printNews(searchResults)}
+                {
+                    searchResults.length ?
+                        printNews(searchResults) :
+                        <h5 className='text-center'>No results found</h5>
+                }
             </div>
         </div>
     )

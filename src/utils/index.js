@@ -62,16 +62,14 @@ export const filterObjectsFromArray = (arr, keyword) => {
     const searchableProperties = ['title', 'description', 'source']
 
     arr.forEach((item) => {
-        if (!item.trending) {
-            searchableProperties.forEach((property) => {
-                if (typeof item[property] === 'string') {
-                    const value = item[property].toLowerCase()
-                    if (value.indexOf(lowercaseKeyword) !== -1) {
-                        results.push(item)
-                    }
+        searchableProperties.forEach((property) => {
+            if (typeof item[property] === 'string') {
+                const value = item[property].toLowerCase()
+                if (value.indexOf(lowercaseKeyword) !== -1) {
+                    results.push(item)
                 }
-            })
-        }
+            }
+        })
     })
     console.log('results: ', results);
     return results

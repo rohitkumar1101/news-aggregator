@@ -20,8 +20,8 @@ const Card = ({
                         <div className="card border-0">
                             <p className="text-uppercase opacity-50 mb-0"><small>{source}</small></p>
                             <div className="card-body p-0">
-                                <h6 className="card-title text-uppercase">{getTruncatedText(title, 80)}</h6>
-                                <p className="card-text mb-0"><small>{getTruncatedText(description, 120)}</small></p>
+                                <h6 className="card-title text-uppercase">{getTruncatedText(title, 60)}</h6>
+                                <p className="card-text mb-0"><small>{getTruncatedText(description, 100)}</small></p>
                                 <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
                             </div>
                             <NewsImage src={image} className="card-img" alt={image} />

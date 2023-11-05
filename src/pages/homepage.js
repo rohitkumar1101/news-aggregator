@@ -6,7 +6,6 @@ import { Navbar, Feed, Filter } from '../components'
 
 //file/function imports
 import { fetchNYTimes, fetchNewsAPI } from '../api/getNews'
-import { filterObjectsFromArray, markAsTrending } from '../utils'
 import '../styles/homepage.css'
 import Newspage from './newspage';
 import Search from './search'

@@ -10,10 +10,10 @@ const NewsImage = ({ src, className }) => {
         } else {
             setImageSrc(DefaultImage)
         }
-    }, [])
+    }, [src])
 
     return (
-        <img src={imageSrc} alt={imageSrc} className={className} />
+        <img src={imageSrc} alt={imageSrc} className={className} loading="lazy" />
     )
 }
 
