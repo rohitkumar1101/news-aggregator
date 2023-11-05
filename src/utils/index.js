@@ -1,5 +1,3 @@
-import Card from "../components/card";
-
 export const getTruncatedText = (text, maxLength) => {
     if (text) {
         if (text.length <= maxLength) {
@@ -35,6 +33,7 @@ export const getNYTimesAPIObject = (data) => {
     data.forEach((item) => {
         let obj = {
             source: "New York Times",
+            section: item.section,
             // author: item.author,
             title: item.title,
             description: item.abstract,
@@ -44,28 +43,6 @@ export const getNYTimesAPIObject = (data) => {
         result.push(obj)
     })
     return result
-}
-
-
-export const printNews = (arr, isTrending) => {
-    return Array.isArray(arr) && arr.length && arr.map((item) => {
-        if (item.description !== null) {
-            return (
-                <div className={`${isTrending ? null : 'col-sm-4'} ${item.className && item.className}`} key={item.title}>
-                    <Card
-                        source={item.source}
-                        title={item.title}
-                        description={item.description}
-                        image={item.image}
-                        publishedAt={item.publishedAt}
-                        trending={item.trending}
-                        author={item.author}
-                    />
-                </div>
-            )
-        }
-
-    })
 }
 
 export const markAsTrending = (arr) => {
