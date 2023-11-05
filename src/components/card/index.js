@@ -3,22 +3,22 @@ import NewsImage from '../../common/image'
 import { getTruncatedText } from '../../utils'
 
 const Card = ({
-    imageUrl,
+    image,
     title,
     description,
     publishedAt
 }) => {
 
     return (
-        <div className="card border-0 mb-3">
+        <div className="card border-0 my-3">
             <div className="row g-0">
                 <div className="col-lg-4">
-                    <NewsImage src={imageUrl} className="img-fluid rounded-start" />
+                    <NewsImage src={image} className="img-fluid" />
                 </div>
                 <div className="col-lg-8">
                     <div className="card-body pb-0 pt-0 pr-0">
-                        <h6 className="card-title">{title}</h6>
-                        <p className="card-text mb-0"><small>{getTruncatedText(description, 50)}</small></p>
+                        <h6 className="card-title">{getTruncatedText(title, 50)}</h6>
+                        <p className="card-text mb-0"><small>{getTruncatedText(description, 70)}</small></p>
                         <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
                     </div>
                 </div>

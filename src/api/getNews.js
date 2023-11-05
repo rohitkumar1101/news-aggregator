@@ -8,3 +8,14 @@ export const fetchNewsAPI = async () => {
         return error.message
     }
 }
+
+export const fetchNYTimes = async () => {
+    try {
+        let response = await fetch('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=XkYSUl7Tcpu6zYav6EuauH42DfA9dM8D')
+        let newsList = await response.json()
+        return newsList
+    } catch (error) {
+        console.error(error, "ERROR")
+        return error.message
+    }
+}
