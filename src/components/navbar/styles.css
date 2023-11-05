@@ -12,4 +12,16 @@
     justify-content: center;
     align-items: center;
     font-size: 30px;
+    color: #fff;
+}
+
+.navbar-search {
+    display: flex;
+    width: 40%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #FF6B00;
+    border: 1px solid #fff;
 }

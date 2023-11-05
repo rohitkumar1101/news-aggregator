@@ -52,3 +52,24 @@ export const markAsTrending = (arr) => {
     arr[2].className = "trending-3"
     return arr
 }
+
+export const filterObjectsFromArray = (arr, keyword) => {
+    const results = []
+    const lowercaseKeyword = keyword.toLowerCase();
+
+    const searchableProperties = ['title', 'description']
+
+    arr.forEach((item) => {
+        console.log('item: ', keyword);
+        searchableProperties.forEach((property) => {
+            console.log('property: ', property);
+            if (typeof item[property] === 'string') {
+                const value = item[property].toLowerCase()
+                if (value.indexOf(lowercaseKeyword) !== -1) {
+                    results.push(item)
+                }
+            }
+        })
+    })
+    return results
+}

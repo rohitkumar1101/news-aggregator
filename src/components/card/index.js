@@ -8,7 +8,8 @@ const Card = ({
     description,
     publishedAt,
     trending,
-    source
+    source,
+    section
 }) => {
 
     return (
@@ -29,7 +30,7 @@ const Card = ({
                     :
                     <div className="card border-0">
                         <div className="row g-0">
-                            <p className="text-uppercase opacity-50 mb-0"><small>{source}</small></p>
+                            <p className="text-uppercase opacity-50 mb-0"><small>{section ? section : source}</small></p>
                             <div className="col-lg-4">
                                 <NewsImage src={image} className="img-fluid" />
                             </div>

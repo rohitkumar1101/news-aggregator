@@ -1,11 +1,14 @@
-.filter {
+.feed {
     display: flex;
     background: #000;
     width: 100%;
     justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
 }
 
-.filter-items {
+.feed-items {
     color: #fff;
     display: flex;
+    margin: 0;
 }
