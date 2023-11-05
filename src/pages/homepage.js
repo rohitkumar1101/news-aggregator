@@ -3,51 +3,39 @@ import React, { useEffect, useState } from 'react'
 
 //component imports
 import { Navbar, Filter } from '../components'
-import Card from '../components/card'
-import { fetchNYTimes, fetchNewsAPI, fetchTheGuardian } from '../api/getNews'
+import { fetchNYTimes, fetchNewsAPI } from '../api/getNews'
+import { markAsTrending, printNews } from '../utils'
 
-import "./styles.css"
-import { getNYTimesAPIObject, getNewsAPIObject } from '../utils'
+import '../styles/homepage.css'
 
 const Homepage = () => {
     const [news, setNews] = useState([])
+    const [trendingNews, setTrendingNews] = useState([])
 
     useEffect(() => {
         const fetchNews = async () => {
             let response = await fetchNewsAPI()
             let response2 = await fetchNYTimes()
-            let updatedResponse = getNewsAPIObject(response.articles)
-            let updatedResponse2 = getNYTimesAPIObject(response2.results)
-            setNews([...updatedResponse.splice(0, 3), ...updatedResponse2.splice(0, 3)])
+            setNews([...response.splice(0, 3), ...response2.splice(0, 3)])
+
+            let trending = markAsTrending([...response.splice(0, 1), ...response2.splice(0, 2)])
+            setTrendingNews(trending)
         }
         fetchNews()
     }, [])
-    console.log(news, "NEWs");
+
     return (
         <>
             <Navbar />
             <Filter />
-            <div className='container'>
+            <div className='grid-container'>
+                {printNews(trendingNews, true)}
+            </div>
+
+            <div className='container p-2'>
                 <div className='row'>
-                    {
-                        Array.isArray(news) && news.length && news.map((item) => {
-                            if (item.description !== null) {
-                                return (
-                                    <div className='col-sm-4'>
-                                        <Card
-                                            title={item.title}
-                                            description={item.description}
-                                            image={item.image}
-                                            publishedAt={item.publishedAt}
-                                        />
-                                    </div>
-                                )
-                            }
-
-                        })
-                    }
+                    {printNews(news, false)}
                 </div>
-
             </div>
 
         </>

@@ -1,3 +1,5 @@
+import Card from "../components/card";
+
 export const getTruncatedText = (text, maxLength) => {
     if (text) {
         if (text.length <= maxLength) {
@@ -45,27 +47,31 @@ export const getNYTimesAPIObject = (data) => {
 }
 
 
-// const nyTimes = {
-//     title,
-//     abstract, //desc
-//     published_date,
-//     multimedia: {
-//         url, //image
-//     },
-//     author,
-//     source
-// }
+export const printNews = (arr, isTrending) => {
+    return Array.isArray(arr) && arr.length && arr.map((item) => {
+        if (item.description !== null) {
+            return (
+                <div className={`${isTrending ? null : 'col-sm-4'} ${item.className && item.className}`} key={item.title}>
+                    <Card
+                        source={item.source}
+                        title={item.title}
+                        description={item.description}
+                        image={item.image}
+                        publishedAt={item.publishedAt}
+                        trending={item.trending}
+                        author={item.author}
+                    />
+                </div>
+            )
+        }
 
-// const NEWSAPI = {
-//     source: {
-//         id,
-//         name
-//     },
-//     author,
-//     title,
-//     description,
-//     url,
-//     urlToImage,
-//     publishedAt,
-//     content
-// }
+    })
+}
+
+export const markAsTrending = (arr) => {
+    arr[0].trending = true
+    arr[0].className = "trending-1"
+    arr[1].className = "trending-2"
+    arr[2].className = "trending-3"
+    return arr
+}
