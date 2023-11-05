@@ -1,3 +1,5 @@
+import Card from "../components/card";
+
 export const getTruncatedText = (text, maxLength) => {
     if (text) {
         if (text.length <= maxLength) {
@@ -57,19 +59,40 @@ export const filterObjectsFromArray = (arr, keyword) => {
     const results = []
     const lowercaseKeyword = keyword.toLowerCase();
 
-    const searchableProperties = ['title', 'description']
+    const searchableProperties = ['title', 'description', 'source']
 
     arr.forEach((item) => {
-        console.log('item: ', keyword);
-        searchableProperties.forEach((property) => {
-            console.log('property: ', property);
-            if (typeof item[property] === 'string') {
-                const value = item[property].toLowerCase()
-                if (value.indexOf(lowercaseKeyword) !== -1) {
-                    results.push(item)
+        if (!item.trending) {
+            searchableProperties.forEach((property) => {
+                if (typeof item[property] === 'string') {
+                    const value = item[property].toLowerCase()
+                    if (value.indexOf(lowercaseKeyword) !== -1) {
+                        results.push(item)
+                    }
                 }
-            }
-        })
+            })
+        }
     })
+    console.log('results: ', results);
     return results
+}
+
+
+export const printNews = (arr, source) => {
+    return Array.isArray(arr) && arr.length && arr.map((item) => {
+        return (
+            <div className={`col-sm-4`} key={item.title}>
+                <Card
+                    source={item.source}
+                    section={item.section}
+                    title={item.title}
+                    description={item.description}
+                    image={item.image}
+                    publishedAt={item.publishedAt}
+                    trending={source === "Trending" ? true : false}
+                    author={item.author}
+                />
+            </div>
+        )
+    })
 }
