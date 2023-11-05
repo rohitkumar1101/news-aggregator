@@ -71,8 +71,8 @@ export const filterObjectsFromArray = (arr, keyword) => {
             }
         })
     })
-    console.log('results: ', results);
-    return results
+    // console.log('results: ', results);
+    return [...new Set(results)]
 }
 
 

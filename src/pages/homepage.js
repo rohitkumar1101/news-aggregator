@@ -52,10 +52,10 @@ const Homepage = () => {
                     searchValue ?
                         <Search searchValue={searchValue} allNews={allNews} />
                         :
-                        <>
+                        <div className='container p-2'>
                             <Filter />
                             <Newspage trendingNews={trendingNews} NYTimes={NYTimes} newsAPI={newsAPI} />
-                        </>
+                        </div>
             }
         </>
     )

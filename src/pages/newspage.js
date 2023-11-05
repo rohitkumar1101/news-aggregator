@@ -15,7 +15,7 @@ const Newspage = ({
     return (
         <>
             {/* Trending News */}
-            <div className='container p-2'>
+            <div>
                 <h5 className='text-uppercase'>Trending</h5>
                 <div className='row'>
                     {printNews(trendingNews, "Trending")}
@@ -23,7 +23,7 @@ const Newspage = ({
             </div>
 
             {/* New York Times */}
-            <div className='container p-2'>
+            <div>
                 <h5 className='text-uppercase'>New York Times
                     <small className='newspage-read-all' onClick={() => navigate('/new-york-times')}><u>Read all</u></small>
                 </h5>
@@ -33,7 +33,7 @@ const Newspage = ({
             </div>
 
             {/* News API  */}
-            <div className='container p-2'>
+            <div>
                 <h5 className='text-uppercase'>
                     News API
                     <small className='newspage-read-all' onClick={() => navigate('/news-api')}><u>Read all</u></small>
