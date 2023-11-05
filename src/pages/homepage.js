@@ -10,9 +10,11 @@ import { filterObjectsFromArray, markAsTrending } from '../utils'
 import '../styles/homepage.css'
 import Newspage from './newspage';
 import Search from './search'
+import Loader from '../common/loader'
 
 const Homepage = () => {
     const [searchValue, setSearchValue] = useState('')
+    const [isLoading, setIsLoading] = useState()
 
     const [newsAPI, setNewsAPI] = useState([])
     const [NYTimes, setNYTimes] = useState([])
@@ -21,13 +23,16 @@ const Homepage = () => {
 
     useEffect(() => {
         const fetchNews = async () => {
+            setIsLoading(true)
             let response = await fetchNewsAPI()
             let response2 = await fetchNYTimes()
+
             setNewsAPI([...response.splice(0, 6)])
             setNYTimes([...response2.splice(0, 6)])
             setAllNews([...response, ...response2])
-            let trending = [...response.splice(2, 2), ...response2.splice(2, 1)]
-            setTrendingNews(trending)
+
+            setTrendingNews([...response.splice(2, 2), ...response2.splice(2, 1)])
+            setIsLoading(false)
         }
         fetchNews()
     }, [])
@@ -42,13 +47,16 @@ const Homepage = () => {
         <>
             <Navbar handleSearch={handleSearch} />
             <Feed handleSearch={handleSearch} />
-            <Filter />
 
             {
-                searchValue ?
-                    <Search searchValue={searchValue} allNews={allNews} />
-                    :
-                    <Newspage trendingNews={trendingNews} NYTimes={NYTimes} newsAPI={newsAPI} />
+                isLoading ? <Loader /> :
+                    searchValue ?
+                        <Search searchValue={searchValue} allNews={allNews} />
+                        :
+                        <>
+                            <Filter />
+                            <Newspage trendingNews={trendingNews} NYTimes={NYTimes} newsAPI={newsAPI} />
+                        </>
             }
         </>
     )

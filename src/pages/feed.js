@@ -36,7 +36,9 @@ const Feed = ({
                 </div> :
                     <>
                         <div className='container p-2'>
-                            <h6>Total Articles: {newsData.length}</h6>
+                            {
+                                newsData && <h6>Total Articles: {newsData.length}</h6>
+                            }
                             <div className='row'>
                                 {printNews(newsData, "News API")}
                             </div>

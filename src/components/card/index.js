@@ -24,7 +24,7 @@ const Card = ({
                                 <p className="card-text mb-0"><small>{getTruncatedText(description, 120)}</small></p>
                                 <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
                             </div>
-                            <NewsImage src={image} className="card-img-top" alt={image} />
+                            <NewsImage src={image} className="card-img" alt={image} />
                         </div>
                     )
                     :
