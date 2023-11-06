@@ -21,6 +21,7 @@ const Newspage = ({
                     {printNews(trendingNews, "Trending")}
                 </div>
             </div>
+            <hr />
 
             {/* New York Times */}
             <div>
@@ -31,6 +32,7 @@ const Newspage = ({
                     {printNews(NYTimes, "New York Times")}
                 </div>
             </div>
+            <hr />
 
             {/* News API  */}
             <div>
@@ -41,7 +43,6 @@ const Newspage = ({
                 <div className='row'>
                     {printNews(newsAPI, "News API")}
                 </div>
-
             </div>
         </>
     )

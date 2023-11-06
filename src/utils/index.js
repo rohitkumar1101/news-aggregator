@@ -36,7 +36,6 @@ export const getNYTimesAPIObject = (data) => {
         let obj = {
             source: "New York Times",
             section: item.section,
-            // author: item.author,
             title: item.title,
             description: item.abstract,
             image: item.multimedia[1].url,
@@ -45,14 +44,6 @@ export const getNYTimesAPIObject = (data) => {
         result.push(obj)
     })
     return result
-}
-
-export const markAsTrending = (arr) => {
-    arr[0].trending = true
-    arr[0].className = "trending-1"
-    arr[1].className = "trending-2"
-    arr[2].className = "trending-3"
-    return arr
 }
 
 export const filterObjectsFromArray = (arr, keyword) => {
@@ -79,7 +70,7 @@ export const filterObjectsFromArray = (arr, keyword) => {
 export const printNews = (arr, source) => {
     return Array.isArray(arr) && arr.length && arr.map((item) => {
         return (
-            <div className={`col-sm-4`} key={item.title}>
+            <div className="col-sm-4" key={item.title}>
                 <Card
                     source={item.source}
                     section={item.section}
@@ -93,4 +84,22 @@ export const printNews = (arr, source) => {
             </div>
         )
     })
+}
+
+export const getCategoriesAndAuthors = (arr, keyname) => {
+    let categories = [{ [keyname]: "Categories" }], author = [{ [keyname]: "Authors" }]
+    let apiSource = ['new api', 'new york times']
+
+    Array.isArray(arr) && arr.length && arr.map((item) => {
+        if (!apiSource.includes((item.source.toLowerCase())))
+            categories.push({ [keyname]: item.source })
+        if (item.hasOwnProperty("author") && item.author !== null)
+            author.push({ [keyname]: item.author })
+    })
+
+    return {
+        categories: categories,
+        author: author
+    }
+
 }

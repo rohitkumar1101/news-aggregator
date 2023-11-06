@@ -53,7 +53,7 @@ const Homepage = () => {
                         <Search searchValue={searchValue} allNews={allNews} />
                         :
                         <div className='container p-2'>
-                            <Filter />
+                            <Filter allNews={allNews} />
                             <Newspage trendingNews={trendingNews} NYTimes={NYTimes} newsAPI={newsAPI} />
                         </div>
             }

@@ -9,7 +9,8 @@ const Card = ({
     publishedAt,
     trending,
     source,
-    section
+    section,
+    author
 }) => {
 
     return (
@@ -38,7 +39,10 @@ const Card = ({
                                 <div className="card-body pb-0 pt-0 pr-0">
                                     <h6 className="card-title text-uppercase">{getTruncatedText(title, 50)}</h6>
                                     <p className="card-text mb-0"><small>{getTruncatedText(description, 70)}</small></p>
-                                    <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
+                                    <div className='d-flex justify-content-between '>
+                                        <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
+                                        <p><small className="text-muted">{author}</small></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

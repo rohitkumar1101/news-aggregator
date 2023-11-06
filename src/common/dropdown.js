@@ -1,12 +1,19 @@
 import React from 'react'
 
-const Dropdown = ({ optionsList, className }) => {
+const Dropdown = ({ optionsList, className, source }) => {
     return (
-        <select className={`cursor-pointer ${className}`}>
-            {optionsList?.map((items, index) => <option key={index} value={items?.option}>
-                {items?.option}
-            </option>)}
-        </select>
+        <>
+            <label for="cars">{source}</label>
+            <select className={`cursor-pointer ${className}`}>
+                {
+                    optionsList?.map((items, index) => {
+                        return <option key={index} value={items?.option}>
+                            {items?.option}
+                        </option>
+                    })
+                }
+            </select>
+        </>
     )
 }
 
