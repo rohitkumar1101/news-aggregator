@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# News Aggregator App - Your Source for All the Latest Updates
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction:
+Welcome to the GitHub repository for our News Aggregator App! In an era where information constantly evolves, staying up-to-date with the latest news and trends is more important than ever. Our News Aggregator App is designed to be your one-stop solution for accessing a diverse range of news sources, all in one convenient location.
 
-## Available Scripts
+## Key Features
+1. Multi-Source Aggregation: The app pulls news from various reputable sources, providing a comprehensive view of current events and trending topics.
+2. Customization: Search for your favourite article by keyword and get the results instantly
+3. Mobile responsive: Use the application on any device of your choice
+4. Personalized news feed: Choose your favourite sources, author and categories
+5. Search Functionality: Skip through the list and search the news you want to read first
 
-In the project directory, you can run:
+## How to run the application
+There are two ways in which the application can be run:-
 
-### `npm start`
+### On the local machine where the packages are installed on your local system
+1. Clone the repository onto your local system using SSH
+2. Install all the dependencies using the command
+   ````
+   npm install
+   ````
+3. Once the dependencies are installed, run the command below to start the application
+   ````
+   npm start
+   ````
+4. The application should open up in your favourite browser. If not, open a browser and navigate to http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Inside of a docker container
+1. Clone the repository onto your local system using SSH
+2. Run the docker daemon tool to ensure the application runs correctly
+3. Run the command
+   ```
+   npm run docker
+   ```
+   to run the application in the docker container
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
