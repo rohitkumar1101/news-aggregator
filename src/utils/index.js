@@ -46,6 +46,23 @@ export const getNYTimesAPIObject = (data) => {
     return result
 }
 
+// The Guardian
+export const getTheGuardianAPIObject = (data) => {
+    let result = []
+    data.forEach((item) => {
+        let obj = {
+            source: "The Guardian",
+            section: item.sectionName,
+            title: item.webTitle,
+            // description: item.abstract,
+            // image: item.multimedia[1].url,
+            publishedAt: item.webPublicationDate,
+        }
+        result.push(obj)
+    })
+    return result
+}
+
 export const filterObjectsFromArray = (arr, keyword) => {
     const results = []
     const lowercaseKeyword = keyword.toLowerCase();
@@ -87,7 +104,7 @@ export const printNews = (arr, source) => {
 
 export const getCategoriesAndAuthors = (arr, keyname) => {
     let categories = [], author = []
-    let apiSource = ['new api', 'new york times']
+    let apiSource = ['new api', 'new york times', 'the guardian']
 
     Array.isArray(arr) && arr.length && arr.map((item) => {
         if (!apiSource.includes((item.source.toLowerCase())))

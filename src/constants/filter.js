@@ -1,4 +1,4 @@
-import { fetchNYTimes, fetchNewsAPI } from "../api/getNews";
+import { fetchNYTimes, fetchNewsAPI, fetchTheGuardian } from "../api/getNews";
 
 export const feedMenu = [
     {
@@ -14,5 +14,10 @@ export const feedMenu = [
         name: 'New York Times',
         path: '/new-york-times',
         api: fetchNYTimes
+    },
+    {
+        name: 'The Guardian',
+        path: '/the-guardian',
+        api: fetchTheGuardian
     }
 ]

@@ -1,4 +1,4 @@
-import { getNYTimesAPIObject, getNewsAPIObject } from "../utils"
+import { getNYTimesAPIObject, getNewsAPIObject, getTheGuardianAPIObject } from "../utils"
 
 export const fetchNewsAPI = async () => {
     try {
@@ -6,7 +6,6 @@ export const fetchNewsAPI = async () => {
         let newsList = await response.json()
         return getNewsAPIObject(newsList.articles)
     } catch (error) {
-        console.error(error, "ERROR")
         return error.message
     }
 }
@@ -17,7 +16,17 @@ export const fetchNYTimes = async () => {
         let newsList = await response.json()
         return getNYTimesAPIObject(newsList.results)
     } catch (error) {
-        console.error(error, "ERROR")
+        return error.message
+    }
+}
+
+export const fetchTheGuardian = async () => {
+    try {
+        let response = await fetch('https://content.guardianapis.com/search?api-key=8e0ef232-cf9a-44b5-9e28-a9e7b16a5896')
+        let newsList = await response.json()
+        return getTheGuardianAPIObject(newsList.response.results)
+    } catch (error) {
+        console.error(error)
         return error.message
     }
 }

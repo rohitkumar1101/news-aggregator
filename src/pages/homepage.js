@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Navbar, Feed, Filter } from '../components'
 
 //file/function imports
-import { fetchNYTimes, fetchNewsAPI } from '../api/getNews'
+import { fetchNYTimes, fetchNewsAPI, fetchTheGuardian } from '../api/getNews'
 import '../styles/homepage.css'
 import Newspage from './newspage';
 import Search from './search'
@@ -17,6 +17,7 @@ const Homepage = () => {
 
     const [newsAPI, setNewsAPI] = useState([])
     const [NYTimes, setNYTimes] = useState([])
+    const [theGuardian, setTheGuardian] = useState([])
     const [allNews, setAllNews] = useState([])
     const [trendingNews, setTrendingNews] = useState([])
 
@@ -25,10 +26,13 @@ const Homepage = () => {
             setIsLoading(true)
             let response = await fetchNewsAPI()
             let response2 = await fetchNYTimes()
+            let response3 = await fetchTheGuardian()
+            console.log('response3: ', response3);
 
             setNewsAPI([...response.splice(0, 6)])
             setNYTimes([...response2.splice(0, 6)])
-            setAllNews([...response, ...response2])
+            setTheGuardian([...response3.splice(0, 6)])
+            setAllNews([...response, ...response2, ...response3])
 
             setTrendingNews([...response.splice(2, 2), ...response2.splice(2, 1)])
             setIsLoading(false)
@@ -56,6 +60,7 @@ const Homepage = () => {
                                     trendingNews={trendingNews}
                                     NYTimes={NYTimes}
                                     newsAPI={newsAPI}
+                                    theGuardian={theGuardian}
                                 />
                         }
                     </div>
