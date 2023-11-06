@@ -15,6 +15,7 @@ import { spliceArray } from '../utils';
 const Homepage = () => {
     const [searchValue, setSearchValue] = useState('')
     const [isLoading, setIsLoading] = useState()
+    const [selectedFilters, setSelectedFilters] = useState([])
 
     const [newsAPI, setNewsAPI] = useState([])
     const [NYTimes, setNYTimes] = useState([])
@@ -44,6 +45,10 @@ const Homepage = () => {
         setSearchValue(value)
     }
 
+    const handleFilter = (value) => {
+
+    }
+
     return (
         <>
             <Navbar handleSearch={handleSearch} />
@@ -51,10 +56,19 @@ const Homepage = () => {
             {
                 isLoading ? <Loader /> :
                     <div className='container p-2'>
-                        <Filter allNews={allNews} handleSearch={handleSearch} />
+                        <Filter
+                            allNews={allNews}
+                            handleSearch={handleSearch}
+                            selectedFilters={selectedFilters}
+                            setSelectedFilters={setSelectedFilters}
+                        />
                         {
                             searchValue ?
-                                <Search searchValue={searchValue} allNews={allNews} />
+                                <Search
+                                    searchValue={searchValue}
+                                    allNews={allNews}
+                                    selectedFilters={selectedFilters}
+                                />
                                 :
                                 <Newspage
                                     trendingNews={trendingNews}

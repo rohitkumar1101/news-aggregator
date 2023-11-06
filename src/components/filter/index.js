@@ -14,12 +14,13 @@ const sourceOptions = [
 
 const Filter = ({
     allNews,
-    handleSearch
+    handleSearch,
+    selectedFilters,
+    setSelectedFilters
 }) => {
 
     const [categoriesList, setCategoriesList] = useState([])
     const [authorsList, setAuthorsList] = useState([])
-    const [selectedFilters, setSelectedFilters] = useState([])
 
     useEffect(() => {
         //Get categories & authors list
@@ -46,13 +47,15 @@ const Filter = ({
     const handleSelect = (e) => {
         let { value } = e.target
         handleSearch(value)
-        setSelectedFilters([...selectedFilters, value])
+        if (!selectedFilters.includes(value)) {
+            setSelectedFilters([...selectedFilters, value])
+        }
     }
 
     const handleRemove = (value) => {
+        handleSearch(value)
         let filteredArray = selectedFilters.filter(item => item !== value)
         setSelectedFilters(filteredArray)
-        handleSearch(value)
     }
 
     return (

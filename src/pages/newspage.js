@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { NewsSection } from '../components'
 
 import '../index.css'
@@ -7,7 +7,7 @@ const Newspage = ({
     trendingNews,
     NYTimes,
     newsAPI,
-    theGuardian
+    theGuardian,
 }) => {
 
     return (

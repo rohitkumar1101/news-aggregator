@@ -17,7 +17,8 @@ export const getNewsAPIObject = (data) => {
     let result = []
     data.forEach((item) => {
         let obj = {
-            source: item.source.name,
+            source: "News API",
+            section: item.source.name,
             author: item.author,
             title: item.title,
             description: item.description,
@@ -65,7 +66,13 @@ export const getTheGuardianAPIObject = (data) => {
 
 export const filterObjectsFromArray = (arr, keyword) => {
     const results = []
-    const lowercaseKeyword = keyword.toLowerCase();
+    let lowercaseKeywords, lowercaseKeyword
+    if (Array.isArray(keyword)) {
+        lowercaseKeywords = keyword.map(word => word.toLowerCase());
+    }
+    else {
+        lowercaseKeyword = keyword.toLowerCase();
+    }
 
     const searchableProperties = ['title', 'description', 'source', 'category', 'author']
 
@@ -73,8 +80,14 @@ export const filterObjectsFromArray = (arr, keyword) => {
         searchableProperties.forEach((property) => {
             if (typeof item[property] === 'string') {
                 const value = item[property].toLowerCase()
-                if (value.indexOf(lowercaseKeyword) !== -1) {
-                    results.push(item)
+                if (Array.isArray(keyword)) {
+                    if (lowercaseKeywords.some(keyword => value.includes(keyword))) {
+                        results.push(item)
+                    }
+                } else {
+                    if (value.indexOf(lowercaseKeyword) !== -1) {
+                        results.push(item)
+                    }
                 }
             }
         })
@@ -84,9 +97,9 @@ export const filterObjectsFromArray = (arr, keyword) => {
 
 
 export const printNews = (arr, source) => {
-    return Array.isArray(arr) && arr.length && arr.map((item) => {
+    return Array.isArray(arr) && arr.length && arr.map((item, index) => {
         return (
-            <div className="col-sm-4" key={item.title}>
+            <div className="col-sm-4" key={index}>
                 <Card
                     source={item.source}
                     section={item.section}

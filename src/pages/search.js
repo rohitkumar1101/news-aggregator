@@ -2,15 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { filterObjectsFromArray, printNews } from '../utils'
 
 const Search = ({
+    searchValue,
     allNews,
-    searchValue
+    selectedFilters
 }) => {
     const [searchResults, setSearchResults] = useState([])
 
     useEffect(() => {
-        let response = filterObjectsFromArray(allNews, searchValue)
+        let response
+        if (selectedFilters.length) {
+            response = filterObjectsFromArray(allNews, selectedFilters)
+        } else {
+            response = filterObjectsFromArray(allNews, searchValue)
+        }
         setSearchResults(response)
-    }, [searchValue, allNews])
+    }, [searchValue, allNews, selectedFilters.length])
 
     return (
         <div className='container p-2'>
