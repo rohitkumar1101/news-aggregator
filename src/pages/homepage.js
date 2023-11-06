@@ -36,27 +36,29 @@ const Homepage = () => {
         fetchNews()
     }, [])
 
-
-
-    const handleSearch = (e) => {
-        setSearchValue(e.target.value)
+    const handleSearch = (value) => {
+        setSearchValue(value)
     }
 
     return (
         <>
             <Navbar handleSearch={handleSearch} />
-            <Feed handleSearch={handleSearch} />
+            <Feed />
 
-            {
-                isLoading ? <Loader /> :
-                    searchValue ?
-                        <Search searchValue={searchValue} allNews={allNews} />
-                        :
-                        <div className='container p-2'>
-                            <Filter allNews={allNews} />
-                            <Newspage trendingNews={trendingNews} NYTimes={NYTimes} newsAPI={newsAPI} />
-                        </div>
-            }
+            <div className='container p-2'>
+                <Filter allNews={allNews} handleSearch={handleSearch} />
+                {
+                    isLoading ? <Loader /> :
+                        searchValue ?
+                            <Search searchValue={searchValue} allNews={allNews} />
+                            :
+                            <Newspage
+                                trendingNews={trendingNews}
+                                NYTimes={NYTimes}
+                                newsAPI={newsAPI}
+                            />
+                }
+            </div>
         </>
     )
 }

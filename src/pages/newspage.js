@@ -8,6 +8,7 @@ const Newspage = ({
     NYTimes,
     newsAPI
 }) => {
+
     return (
         <>
             <NewsSection newsData={trendingNews} heading="Trending" />

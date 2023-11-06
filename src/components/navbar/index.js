@@ -14,7 +14,7 @@ const Navbar = ({
             <input
                 placeholder='Search by keyword'
                 className='navbar-search'
-                onChange={handleSearch}
+                onChange={(e) => handleSearch(e.target.value)}
             />
         </div>
     )

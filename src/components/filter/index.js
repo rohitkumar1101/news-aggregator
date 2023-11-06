@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Dropdown from '../../common/dropdown'
-import { filterObjectsFromArray, getCategoriesAndAuthors } from '../../utils'
+import { getCategoriesAndAuthors } from '../../utils'
 import './styles.css'
 
 const sourceOptions = [
@@ -13,7 +13,8 @@ const sourceOptions = [
 ]
 
 const Filter = ({
-    allNews
+    allNews,
+    handleSearch
 }) => {
 
     const [categoriesList, setCategoriesList] = useState([])
@@ -44,18 +45,20 @@ const Filter = ({
 
     const handleSelect = (e) => {
         let { value } = e.target
+        handleSearch(value)
         setSelectedFilters([...selectedFilters, value])
     }
 
     const handleRemove = (value) => {
         let filteredArray = selectedFilters.filter(item => item !== value)
         setSelectedFilters(filteredArray)
+        handleSearch(value)
     }
 
     return (
         <>
             <div className='filter'>
-                <p className='m-0'>Filter By:- </p>
+                <p className='mb-0'>Filter By:-</p>
                 {
                     filterOptions?.map((item) => {
                         return (

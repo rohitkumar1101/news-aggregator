@@ -3,6 +3,10 @@
     justify-content: right;
 }
 
+div > p {
+    margin-right: 10px;
+}
+
 .filter-dropdown{
     margin-right: 10px;
     width: 150px;
