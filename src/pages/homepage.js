@@ -41,12 +41,14 @@ const Homepage = () => {
         fetchNews()
     }, [])
 
+    useEffect(() => {
+        if (!selectedFilters.length) {
+            setSearchValue('')
+        }
+    }, [selectedFilters])
+
     const handleSearch = (value) => {
         setSearchValue(value)
-    }
-
-    const handleFilter = (value) => {
-
     }
 
     return (

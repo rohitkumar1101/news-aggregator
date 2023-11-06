@@ -16,7 +16,7 @@ const Search = ({
             response = filterObjectsFromArray(allNews, searchValue)
         }
         setSearchResults(response)
-    }, [searchValue, allNews, selectedFilters.length])
+    }, [searchValue, allNews, selectedFilters])
 
     return (
         <div className='container p-2'>

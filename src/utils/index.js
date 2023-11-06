@@ -117,11 +117,11 @@ export const printNews = (arr, source) => {
 
 export const getCategoriesAndAuthors = (arr, keyname) => {
     let categories = [], author = []
-    let apiSource = ['new api', 'new york times', 'the guardian']
+    // let apiSource = ['news api', 'new york times', 'the guardian']
 
     Array.isArray(arr) && arr.length && arr.map((item) => {
-        if (!apiSource.includes((item.source.toLowerCase())))
-            categories.push({ [keyname]: item.source })
+        if (item.section)
+            categories.push({ [keyname]: item.section })
         if (item.hasOwnProperty("author") && item.author !== null)
             author.push({ [keyname]: item.author })
         return item
