@@ -94,6 +94,7 @@ export const getCategoriesAndAuthors = (arr, keyname) => {
             categories.push({ [keyname]: item.source })
         if (item.hasOwnProperty("author") && item.author !== null)
             author.push({ [keyname]: item.author })
+        return item
     })
 
     return {

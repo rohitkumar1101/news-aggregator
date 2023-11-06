@@ -26,7 +26,7 @@ const Filter = ({
         let response = getCategoriesAndAuthors(allNews, 'option')
         setCategoriesList(response.categories)
         setAuthorsList(response.author)
-    }, [])
+    }, [allNews])
 
     const filterOptions = [
         {

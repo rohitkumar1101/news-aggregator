@@ -44,21 +44,22 @@ const Homepage = () => {
         <>
             <Navbar handleSearch={handleSearch} />
             <Feed />
-
-            <div className='container p-2'>
-                <Filter allNews={allNews} handleSearch={handleSearch} />
-                {
-                    isLoading ? <Loader /> :
-                        searchValue ?
-                            <Search searchValue={searchValue} allNews={allNews} />
-                            :
-                            <Newspage
-                                trendingNews={trendingNews}
-                                NYTimes={NYTimes}
-                                newsAPI={newsAPI}
-                            />
-                }
-            </div>
+            {
+                isLoading ? <Loader /> :
+                    <div className='container p-2'>
+                        <Filter allNews={allNews} handleSearch={handleSearch} />
+                        {
+                            searchValue ?
+                                <Search searchValue={searchValue} allNews={allNews} />
+                                :
+                                <Newspage
+                                    trendingNews={trendingNews}
+                                    NYTimes={NYTimes}
+                                    newsAPI={newsAPI}
+                                />
+                        }
+                    </div>
+            }
         </>
     )
 }
