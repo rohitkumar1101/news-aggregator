@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Dropdown = ({ optionsList, className, source, onChange }) => {
+const Dropdown = ({ optionsList, className, label, onChange }) => {
     return (
         <>
-            <label for={source}>{source}</label>
-            <select className={`cursor-pointer ${className}`} onChange={onChange} name={source} id={source}>
+            <select className={`cursor-pointer ${className}`} onChange={onChange} name={label} id={label}>
+                <option value="" disabled selected>{label}</option>
                 {
                     optionsList?.map((items, index) => {
                         return <option key={index} value={items?.option}>

@@ -86,7 +86,7 @@ export const printNews = (arr, source) => {
 }
 
 export const getCategoriesAndAuthors = (arr, keyname) => {
-    let categories = [{ [keyname]: "Categories" }], author = [{ [keyname]: "Authors" }]
+    let categories = [], author = []
     let apiSource = ['new api', 'new york times']
 
     Array.isArray(arr) && arr.length && arr.map((item) => {

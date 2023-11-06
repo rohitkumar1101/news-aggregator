@@ -5,9 +5,6 @@ import './styles.css'
 
 const sourceOptions = [
     {
-        option: "Source",
-    },
-    {
         option: "News API",
     },
     {
@@ -22,7 +19,6 @@ const Filter = ({
     const [categoriesList, setCategoriesList] = useState([])
     const [authorsList, setAuthorsList] = useState([])
     const [selectedFilters, setSelectedFilters] = useState([])
-    console.log('selectedFilters: ', selectedFilters);
 
     useEffect(() => {
         //Get categories & authors list
@@ -47,9 +43,13 @@ const Filter = ({
     ]
 
     const handleSelect = (e) => {
-        console.log(e.target.value, "EVENT");
         let { value } = e.target
         setSelectedFilters([...selectedFilters, value])
+    }
+
+    const handleRemove = (value) => {
+        let filteredArray = selectedFilters.filter(item => item !== value)
+        setSelectedFilters(filteredArray)
     }
 
     return (
@@ -60,12 +60,21 @@ const Filter = ({
                     filterOptions?.map((item) => {
                         return (
                             <Dropdown
-                                placeholder="Source"
                                 label={item.label}
                                 optionsList={item.optionsList}
                                 onChange={handleSelect}
+                                className="filter-dropdown"
                             />
                         )
+                    })
+                }
+            </div>
+            <div className='selected-filter'>
+                {
+                    selectedFilters?.map((item, index) => {
+                        return <p className='filter-bubble' key={index}>{item}
+                            <b className='filter-bubble-close' onClick={() => handleRemove(item)}>&times;</b>
+                        </p>
                     })
                 }
             </div>
