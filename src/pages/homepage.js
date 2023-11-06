@@ -10,6 +10,7 @@ import '../styles/homepage.css'
 import Newspage from './newspage';
 import Search from './search'
 import Loader from '../common/loader'
+import { spliceArray } from '../utils';
 
 const Homepage = () => {
     const [searchValue, setSearchValue] = useState('')
@@ -27,14 +28,13 @@ const Homepage = () => {
             let response = await fetchNewsAPI()
             let response2 = await fetchNYTimes()
             let response3 = await fetchTheGuardian()
-            console.log('response3: ', response3);
 
-            setNewsAPI([...response.splice(0, 6)])
-            setNYTimes([...response2.splice(0, 6)])
-            setTheGuardian([...response3.splice(0, 6)])
+            setNewsAPI(spliceArray(response, 0, 6))
+            setNYTimes(spliceArray(response2, 0, 6))
+            setTheGuardian(spliceArray(response3, 0, 6))
             setAllNews([...response, ...response2, ...response3])
 
-            setTrendingNews([...response.splice(2, 2), ...response2.splice(2, 1)])
+            setTrendingNews([...spliceArray(response, 0, 2), ...spliceArray(response2, 0, 1)])
             setIsLoading(false)
         }
         fetchNews()

@@ -1,6 +1,6 @@
 import React from 'react'
 import NewsImage from '../../common/image'
-import { getTruncatedText } from '../../utils'
+import { getReadableDate, getTruncatedText } from '../../utils'
 
 const Card = ({
     image,
@@ -24,7 +24,7 @@ const Card = ({
                             <div className="card-body p-0">
                                 <h6 className="card-title text-uppercase">{getTruncatedText(title, 60)}</h6>
                                 <p className="card-text mb-0"><small>{getTruncatedText(description, 100)}</small></p>
-                                <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
+                                <p className="card-text"><small className="text-muted">{getReadableDate(publishedAt)}</small></p>
                             </div>
                         </div>
                     )
@@ -40,7 +40,7 @@ const Card = ({
                                     <h6 className="card-title text-uppercase">{getTruncatedText(title, 50)}</h6>
                                     <p className="card-text mb-0"><small>{getTruncatedText(description, 70)}</small></p>
                                     <div className='d-flex justify-content-between '>
-                                        <p className="card-text"><small className="text-muted">{new Date(publishedAt).toDateString()}</small></p>
+                                        <p className="card-text"><small className="text-muted">{getReadableDate(publishedAt)}</small></p>
                                         <p><small className="text-muted">{author}</small></p>
                                     </div>
                                 </div>

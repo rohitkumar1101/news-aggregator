@@ -120,3 +120,14 @@ export const getCategoriesAndAuthors = (arr, keyname) => {
     }
 
 }
+
+export const spliceArray = (arr, startEl, numberOfEl) => {
+    return arr.splice(startEl, numberOfEl)
+}
+
+export const getReadableDate = (val) => {
+    let month = new Date(val).toLocaleString('default', { month: 'short' });
+    let date = new Date(val).getDate()
+
+    return `${month} ${date}`
+}
