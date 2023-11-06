@@ -17,7 +17,7 @@ const Search = ({
             <div className='row'>
                 {
                     searchResults.length ?
-                        printNews(searchResults) :
+                        printNews(searchResults, "Search") :
                         <h5 className='text-center'>No results found</h5>
                 }
             </div>

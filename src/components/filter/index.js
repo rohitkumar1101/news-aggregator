@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Dropdown from '../../common/dropdown'
-import { getCategoriesAndAuthors } from '../../utils'
+import { filterObjectsFromArray, getCategoriesAndAuthors } from '../../utils'
 import './styles.css'
 
 const sourceOptions = [
@@ -21,11 +21,12 @@ const Filter = ({
 
     const [categoriesList, setCategoriesList] = useState([])
     const [authorsList, setAuthorsList] = useState([])
+    const [selectedFilters, setSelectedFilters] = useState([])
+    console.log('selectedFilters: ', selectedFilters);
 
     useEffect(() => {
         //Get categories & authors list
         let response = getCategoriesAndAuthors(allNews, 'option')
-        console.log('response: ', response);
         setCategoriesList(response.categories)
         setAuthorsList(response.author)
     }, [])
@@ -45,6 +46,12 @@ const Filter = ({
         }
     ]
 
+    const handleSelect = (e) => {
+        console.log(e.target.value, "EVENT");
+        let { value } = e.target
+        setSelectedFilters([...selectedFilters, value])
+    }
+
     return (
         <>
             <div className='filter'>
@@ -56,6 +63,7 @@ const Filter = ({
                                 placeholder="Source"
                                 label={item.label}
                                 optionsList={item.optionsList}
+                                onChange={handleSelect}
                             />
                         )
                     })

@@ -4,46 +4,35 @@ import { useNavigate } from 'react-router-dom'
 
 import '../index.css'
 
+const NewsSection = (newsData, heading, link = false) => {
+    const navigate = useNavigate()
+
+    return (
+        <>
+            <div>
+                <h5 className='text-uppercase'>
+                    {heading}
+                    {link && <small className='newspage-read-all' onClick={() => navigate(link)}><u>Read all</u></small>}
+                </h5>
+                <div className='row'>
+                    {printNews(newsData, heading)}
+                </div>
+            </div>
+            <hr />
+        </>
+    )
+}
+
 const Newspage = ({
     trendingNews,
     NYTimes,
     newsAPI
 }) => {
-
-    const navigate = useNavigate()
-
     return (
         <>
-            {/* Trending News */}
-            <div>
-                <h5 className='text-uppercase'>Trending</h5>
-                <div className='row'>
-                    {printNews(trendingNews, "Trending")}
-                </div>
-            </div>
-            <hr />
-
-            {/* New York Times */}
-            <div>
-                <h5 className='text-uppercase'>New York Times
-                    <small className='newspage-read-all' onClick={() => navigate('/new-york-times')}><u>Read all</u></small>
-                </h5>
-                <div className='row'>
-                    {printNews(NYTimes, "New York Times")}
-                </div>
-            </div>
-            <hr />
-
-            {/* News API  */}
-            <div>
-                <h5 className='text-uppercase'>
-                    News API
-                    <small className='newspage-read-all' onClick={() => navigate('/news-api')}><u>Read all</u></small>
-                </h5>
-                <div className='row'>
-                    {printNews(newsAPI, "News API")}
-                </div>
-            </div>
+            {NewsSection(trendingNews, "Trending")}
+            {NewsSection(NYTimes, "New York Times", '/new-york-times')}
+            {NewsSection(newsAPI, "News API", '/news-api')}
         </>
     )
 }

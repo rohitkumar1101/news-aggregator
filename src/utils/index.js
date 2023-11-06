@@ -50,7 +50,7 @@ export const filterObjectsFromArray = (arr, keyword) => {
     const results = []
     const lowercaseKeyword = keyword.toLowerCase();
 
-    const searchableProperties = ['title', 'description', 'source']
+    const searchableProperties = ['title', 'description', 'source', 'category', 'author']
 
     arr.forEach((item) => {
         searchableProperties.forEach((property) => {
@@ -62,7 +62,6 @@ export const filterObjectsFromArray = (arr, keyword) => {
             }
         })
     })
-    // console.log('results: ', results);
     return [...new Set(results)]
 }
 
