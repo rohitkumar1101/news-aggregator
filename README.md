@@ -13,7 +13,7 @@ Welcome to the GitHub repository for our News Aggregator App! In an era where in
 ## How to run the application
 There are two ways in which the application can be run:-
 
-### On the local machine where the packages are installed on your local system
+### On the local machine
 1. Clone the repository onto your local system using SSH
 2. Install all the dependencies using the command
    ````
