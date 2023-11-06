@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom'
 import { Navbar, Feed as FeedComponent } from '../components';
 import { printNews } from '../utils';
 import { feedMenu } from '../constants/filter';
+import Loader from '../common/loader';
 
-const Feed = ({
-    handleSearch
-}) => {
+const Feed = () => {
     const params = useParams()
 
     const [newsData, setNewsData] = useState()
     const [isLoading, setIsLoading] = useState()
+    console.log('isLoading: ', isLoading);
 
     useEffect(() => {
         const fetchNews = () => {
@@ -28,12 +28,10 @@ const Feed = ({
 
     return (
         <>
-            <Navbar handleSearch={handleSearch} />
+            <Navbar />
             <FeedComponent />
             {
-                isLoading ? <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div> :
+                isLoading ? <Loader /> :
                     <>
                         <div className='container p-2'>
                             {
