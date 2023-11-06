@@ -36,7 +36,7 @@ const Card = ({
                                 <NewsImage src={image} className="img-fluid" />
                             </div>
                             <div className="col-lg-8">
-                                <div className="card-body pb-0 pt-0 pr-0">
+                                <div className="card-body py-0">
                                     <h6 className="card-title text-uppercase">{getTruncatedText(title, 50)}</h6>
                                     <p className="card-text mb-0"><small>{getTruncatedText(description, 70)}</small></p>
                                     <div className='d-flex justify-content-between '>
